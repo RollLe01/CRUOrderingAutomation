@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Order Maintenance (Prod-Cloud-Spring)",
+  "Type": "Screen",
+  "Id": "ovLtLJB2nUCzmL7lV6DjgA",
+  "Reference": "GHIoAxS_okSxNaVN8v74Jg/ovLtLJB2nUCzmL7lV6DjgA",
+  "ParentRef": "GHIoAxS_okSxNaVN8v74Jg/4xLG8P2VmEawQLSf6b58KA",
+  "Created": "2024-06-12T15:41:18.4556176Z",
+  "Updated": "2024-06-12T15:41:18.4556176Z",
+  "CreatedBy": [
+    "UiPath.Platform, Version=24.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
