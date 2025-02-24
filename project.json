@@ -1,14 +1,15 @@
 {
   "name": "RAROrderingAutomation_CRUOps",
+  "projectId": "9dc47d2f-5a73-47e8-8b5b-f33565d0ff1d",
   "description": "Automation of manual notes in CRU Ordering application",
   "main": "RAROrderingAutomation_End-to-End.xaml",
   "dependencies": {
-    "UiPath.Credentials.Activities": "[2.0.0]",
-    "UiPath.Excel.Activities": "[2.22.4]",
-    "UiPath.Mail.Activities": "[1.23.1]",
-    "UiPath.System.Activities": "[24.3.1]",
-    "UiPath.Testing.Activities": "[24.10.0]",
-    "UiPath.UIAutomation.Activities": "[23.10.12]"
+    "UiPath.Credentials.Activities": "[2.1.0]",
+    "UiPath.Excel.Activities": "[2.24.4]",
+    "UiPath.Mail.Activities": "[1.24.13]",
+    "UiPath.System.Activities": "[25.2.1]",
+    "UiPath.Testing.Activities": "[24.10.4]",
+    "UiPath.UIAutomation.Activities": "[24.10.11]"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -44,7 +45,7 @@
       "ignoredFiles": []
     },
     "fileInfoCollection": [],
-    "modernBehavior": true
+    "saveToCloud": false
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [

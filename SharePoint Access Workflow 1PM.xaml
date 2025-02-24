@@ -16,7 +16,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,3114</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,3483.3333333333335</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Order_Notes_per_Agency_Type_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -117,13 +117,14 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SharePoint Access Workflow" sap:VirtualizedContainerService.HintSize="616.6666666666666,3049.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SharePoint Access Workflow" sap:VirtualizedContainerService.HintSize="1194.6666666666667,3250" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:FolderExistsX sap2010:Annotation.AnnotationText="Check if RAROBOT Folder with today's date exists" DisplayName="Folder Exists" Exists="[In_RAROBotFolderExists]" sap:VirtualizedContainerService.HintSize="554.6666666666666,167.33333333333334" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[In_RAROBotFolder]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="554.6666666666666,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Creating datatable from the masterfile.&quot;]" />
+    <ui:FolderExistsX sap2010:Annotation.AnnotationText="Check if RAROBOT Folder with today's date exists" DisplayName="Folder Exists" Exists="[In_RAROBotFolderExists]" sap:VirtualizedContainerService.HintSize="554.6666666666666,199.33333333333334" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[In_RAROBotFolder]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -132,7 +133,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:FolderExistsX>
-    <If Condition="[In_RAROBotFolderExists]" sap:VirtualizedContainerService.HintSize="554.6666666666666,454.6666666666667" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[In_RAROBotFolderExists]" sap:VirtualizedContainerService.HintSize="554.6666666666666,528.6666666666666" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -140,13 +141,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="376,270.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,266" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ReadRange AddHeaders="True" sap2010:Annotation.AnnotationText="Read the contents of the workbook and save it in a datatable. &#xA;&#xA;- First run is at 8AM EST&#xA;- Second run is at 1PM EST" DataTable="[In_FileDT]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="334,183.33333333333334" sap2010:WorkflowViewState.IdRef="ReadRange_1" PreserveFormat="True" SheetName="RAW" WorkbookPath="[In_MasterFile1PM]">
+          <ui:ReadRange WorkbookPathResource="{x:Null}" AddHeaders="True" sap2010:Annotation.AnnotationText="Read the contents of the workbook and save it in a datatable. &#xA;&#xA;- First run is at 8AM EST&#xA;- Second run is at 1PM EST" DataTable="[In_FileDT]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="382,206" sap2010:WorkflowViewState.IdRef="ReadRange_1" PreserveFormat="True" SheetName="RAW" WorkbookPath="[In_MasterFile1PM]">
             <ui:ReadRange.Range>
               <InArgument x:TypeArguments="x:String">
                 <Literal x:TypeArguments="x:String" Value="" />
@@ -161,7 +162,7 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="300,81.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -170,29 +171,29 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Read each row of the datatable and assign a variable." DataTable="[In_FileDT]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="554.6666666666666,2236.6666666666665" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Read each row of the datatable and assign a variable." DataTable="[In_FileDT]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="554.6666666666666,2178" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="520.6666666666666,2016" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="512.6666666666666,1947.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="USERNAME" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="478.6666666666667,192.66666666666666" sap2010:WorkflowViewState.IdRef="GetRowItem_1" Row="[row]">
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="USERNAME" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="478.6666666666667,224.66666666666666" sap2010:WorkflowViewState.IdRef="GetRowItem_1" Row="[row]">
               <ui:GetRowItem.Value>
                 <OutArgument x:TypeArguments="x:String">[In_UserNameVal]</OutArgument>
               </ui:GetRowItem.Value>
             </ui:GetRowItem>
-            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="TRANSACTION NUMBER" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="478.6666666666667,192.66666666666666" sap2010:WorkflowViewState.IdRef="GetRowItem_2" Row="[row]">
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="TRANSACTION NUMBER" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="478.6666666666667,224.66666666666666" sap2010:WorkflowViewState.IdRef="GetRowItem_2" Row="[row]">
               <ui:GetRowItem.Value>
                 <OutArgument x:TypeArguments="x:String">[In_TranNumVal]</OutArgument>
               </ui:GetRowItem.Value>
             </ui:GetRowItem>
-            <ui:MultipleAssign sap2010:Annotation.AnnotationText="Assign and initialize the variables for extracting the first 9 digits of the Order Number." DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478.6666666666667,224" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+            <ui:MultipleAssign sap2010:Annotation.AnnotationText="Assign and initialize the variables for extracting the first 9 digits of the Order Number." DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478.6666666666667,256" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -227,34 +228,34 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:MultipleAssign>
-            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="REFERENCE NUMBER" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="478.6666666666667,192.66666666666666" sap2010:WorkflowViewState.IdRef="GetRowItem_3" Row="[row]">
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="REFERENCE NUMBER" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="478.6666666666667,224.66666666666666" sap2010:WorkflowViewState.IdRef="GetRowItem_3" Row="[row]">
               <ui:GetRowItem.Value>
                 <OutArgument x:TypeArguments="x:String">[In_RefNumVal]</OutArgument>
               </ui:GetRowItem.Value>
             </ui:GetRowItem>
-            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="AGENCY TYPE" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="478.6666666666667,192.66666666666666" sap2010:WorkflowViewState.IdRef="GetRowItem_4" Row="[row]">
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="AGENCY TYPE" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="478.6666666666667,224.66666666666666" sap2010:WorkflowViewState.IdRef="GetRowItem_4" Row="[row]">
               <ui:GetRowItem.Value>
                 <OutArgument x:TypeArguments="x:String">[In_AgencyTypeVal]</OutArgument>
               </ui:GetRowItem.Value>
             </ui:GetRowItem>
-            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="ORDER NO (Q)" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="478.6666666666667,192.66666666666666" sap2010:WorkflowViewState.IdRef="GetRowItem_5" Row="[row]">
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="ORDER NO (Q)" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="478.6666666666667,224.66666666666666" sap2010:WorkflowViewState.IdRef="GetRowItem_5" Row="[row]">
               <ui:GetRowItem.Value>
                 <OutArgument x:TypeArguments="x:String">[In_OrderNoVal]</OutArgument>
               </ui:GetRowItem.Value>
             </ui:GetRowItem>
-            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="AUTOMATION STATUS" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="478.6666666666667,192.66666666666666" sap2010:WorkflowViewState.IdRef="GetRowItem_6" Row="[row]">
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="AUTOMATION STATUS" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="478.6666666666667,224.66666666666666" sap2010:WorkflowViewState.IdRef="GetRowItem_6" Row="[row]">
               <ui:GetRowItem.Value>
                 <OutArgument x:TypeArguments="x:String">[In_AutoStat]</OutArgument>
               </ui:GetRowItem.Value>
             </ui:GetRowItem>
-            <ui:WriteRange AddHeaders="False" sap2010:Annotation.AnnotationText="" DataTable="[In_FileDT]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="478.6666666666667,146.66666666666666" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="RAW" StartingCell="[&quot;A2:A&quot; &amp; (In_FileDT.Rows.Count + 1)]" WorkbookPath="[In_MasterFile1PM]">
+            <ui:WriteRange WorkbookPathResource="{x:Null}" AddHeaders="False" sap2010:Annotation.AnnotationText="" DataTable="[In_FileDT]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="478.6666666666667,178.66666666666666" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="RAW" StartingCell="[&quot;A2:A&quot; &amp; (In_FileDT.Rows.Count + 1)]" WorkbookPath="[In_MasterFile1PM]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:WriteRange>
-            <ui:OutputDataTable Text="{x:Null}" DataTable="[In_FileDT]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="478.6666666666667,82" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" />
+            <ui:OutputDataTable Text="{x:Null}" DataTable="[In_FileDT]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="478.6666666666667,104.66666666666667" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" />
           </Sequence>
         </ActivityAction>
       </ui:ForEachRow.Body>
@@ -266,5 +267,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="554.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Datatable created.&quot;]" />
   </Sequence>
 </Activity>
